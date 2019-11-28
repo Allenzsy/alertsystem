@@ -9,9 +9,9 @@
         <result column="password" property="password" />
     </resultMap>
     <select id="findById" resultMap="BaseResultMap">
-        select * from user where id = #{id}
+        select * from t_user where id = #{id}
     </select>
     <select id="findAll" resultMap="BaseResultMap">
-        select * from user
+        select * from t_user
     </select>
 </mapper>

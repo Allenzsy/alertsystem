@@ -22,6 +22,7 @@ public class UserController {
     @Resource
     private UserMapper userMapper;
 
+    // 当使用get方法请求/user这个uri的时候，调用该方法
     @GetMapping
     public User findUser(@RequestParam(value = "id") Long id){
         return userMapper.findById(id);
