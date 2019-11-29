@@ -1,6 +1,5 @@
-package org.zsy.alertsystem.mapper;
+package org.zsy.alertsystem.dao;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 import org.zsy.alertsystem.pojo.User;
 

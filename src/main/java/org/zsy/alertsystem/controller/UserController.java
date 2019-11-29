@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.zsy.alertsystem.mapper.UserMapper;
+import org.zsy.alertsystem.dao.UserMapper;
 import org.zsy.alertsystem.pojo.User;
 
 import javax.annotation.Resource;

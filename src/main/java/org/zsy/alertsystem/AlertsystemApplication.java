@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("org.zsy.alertsystem.mapper")
+@MapperScan("org.zsy.alertsystem.dao")
 public class AlertsystemApplication {
 
     public static void main(String[] args) {
