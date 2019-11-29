@@ -37,7 +37,7 @@
    | ---------- | -------------------- |
    | system_id  | 发出预警信息的系统id |
    | ex_id      | 预警信息中异常类别id |
-| admin_name | 负责人姓名           |
+   | admin_name | 负责人姓名           |
    | admin_mail | 负责人邮箱           |
    
    
@@ -66,14 +66,14 @@
    - 查询 系统n 在数据库中的信息
 
      ```java
-// 通过联合主键获取ExMessage对象
-ExMessage getExMessageByUniteId(Integer systemId, Integer exId);
+     // 通过联合主键获取ExMessage对象
+     ExMessage getExMessageByUniteId(Integer systemId, Integer exId);
      ```
 
    - 删除 系统n 在数据库中的信息
 
      ```java
-void deleteExMessage(Integer systemId, Integer exId);
+     void deleteExMessage(Integer systemId, Integer exId);
      ```
 
 
