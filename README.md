@@ -17,7 +17,7 @@
 
  <center>
          <span>
-             <img src="pics/流程.PNG" width="200px">
+             <img src="https://github.com/Allenzsy/alertsystem/blob/master/pics/1.png" width="200px">
          </span>
  </center>
 
