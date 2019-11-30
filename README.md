@@ -53,7 +53,7 @@
 	| ex_occurtime   | 异常信息在系统发生的时间 |
 	| ex_createtime  | 预警信息入库时间         |
 	
-	在 id 建立自增主键，在 system_id 索引， 在 ex_time 建立索引加快查询排序
+	在 id 建立自增主键，在 system_id 索引， 在 ex_occurtime建立索引加快查询排序
 
 2. t_system 系统表
 
@@ -108,7 +108,7 @@
    | id     | 发送器 id                  |
    | config | 发送器配置，Json字符串形式 |
 
-8. t_rank
+8. t_rank 预警级别表
 
    | 字段名 | 描述                               |
    | ------ | ---------------------------------- |
@@ -142,7 +142,7 @@
    - 删除 系统n 在数据库中的信息
    
      ```java
-    void deleteExMessage(Integer id);
+     void deleteExMessage(Integer id);
      ```
 
 
