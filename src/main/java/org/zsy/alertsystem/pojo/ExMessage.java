@@ -9,17 +9,26 @@ import java.util.Date;
  */
 public class ExMessage {
 
-    private Integer systemId;
+    private Long id;
+    private Long systemId;
     private String systemName;
-    private Integer exId;
+    private Long exId;
     private String exDescription;
     private Date exTime;
 
-    public Integer getSystemId() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getSystemId() {
         return systemId;
     }
 
-    public void setSystemId(Integer systemId) {
+    public void setSystemId(Long systemId) {
         this.systemId = systemId;
     }
 
@@ -31,11 +40,11 @@ public class ExMessage {
         this.systemName = systemName;
     }
 
-    public Integer getExId() {
+    public Long getExId() {
         return exId;
     }
 
-    public void setExId(Integer exId) {
+    public void setExId(Long exId) {
         this.exId = exId;
     }
 
@@ -58,7 +67,8 @@ public class ExMessage {
     @Override
     public String toString() {
         return "ExMessage{" +
-                "systemId=" + systemId +
+                "id=" + id +
+                ", systemId=" + systemId +
                 ", systemName='" + systemName + '\'' +
                 ", exId=" + exId +
                 ", exDescription='" + exDescription + '\'' +

@@ -17,7 +17,6 @@ public interface SenderService {
      * @param exMessage
      * @return
      */
-
     boolean checkNeedToSend(Date newExTime, ExMessage exMessage);
 
     void sendExMessage(ExMessage exMessage);

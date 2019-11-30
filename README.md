@@ -74,14 +74,14 @@
      List<ExMessage> getExMessageByUniteId(Integer systemId, Integer exId);
      ```
    
-  ```
+     ```java
      ExMessage getExMessageById(Integer id);
-  ```
-   
+     ```
+
    - 删除 系统n 在数据库中的信息
    
      ```java
-  void deleteExMessage(Integer id);
+    void deleteExMessage(Integer id);
      ```
 
 

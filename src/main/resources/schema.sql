@@ -23,20 +23,22 @@ CREATE TABLE if not exists `t_user`(
 insert into t_user (name, password) values ('zsy', '123123'),('wk', '123456');
 
 CREATE TABLE if not  exists `t_exmessage` (
+    `id` int NOT NULL AUTO_INCREMENT,
     `system_id` bigint NOT NULL COMMENT '系统id',
     `system_name` varchar (30) NOT NULL COMMENT '系统名称',
     `ex_id` bigint NOT NULL COMMENT '异常类别id',
     `ex_time` timestamp NOT NULL COMMENT '异常时间',
     `ex_description` varchar (120) NOT NULL COMMENT '异常描述',
-    PRIMARY KEY (system_id, ex_id) /* 联合主键，对同一系统的同类型预警信息只存储一次*/
+    PRIMARY KEY (id),
+    key idx_system_ex(system_id, ex_id),
+    key idx_ex_time(ex_time)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE if not  exists `t_notice` (
     `system_id` bigint NOT NULL COMMENT '系统id',
-    `ex_id` bigint NOT NULL COMMENT '异常类别id',
     `admin_name` varchar (16) NOT NULL,
     `admin_mail` varchar (50) NOT NULL,
-    PRIMARY KEY (system_id, ex_id) /* 联合主键，对同一系统的同类型预警信息只存储一次*/
+    PRIMARY KEY (system_id)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
 insert into t_notice values (10001, 34, '张经理', '986847686@qq.com');
