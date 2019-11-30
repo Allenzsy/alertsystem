@@ -41,6 +41,6 @@ CREATE TABLE if not  exists `t_notice` (
     PRIMARY KEY (system_id)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
-insert into t_notice values (10001, 34, '张经理', '986847686@qq.com');
+insert into t_notice values (10001, '张经理', '986847686@qq.com');
 
 select admin_name, admin_mail from t_notice where system_id=10001 and ex_id=34;

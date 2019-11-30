@@ -8,7 +8,6 @@ package org.zsy.alertsystem.pojo;
 public class Notice {
 
     private Integer system_id;
-    private Integer ex_id;
     private String admin_name;
     private String admin_mail;
 
@@ -18,14 +17,6 @@ public class Notice {
 
     public void setSystem_id(Integer system_id) {
         this.system_id = system_id;
-    }
-
-    public Integer getEx_id() {
-        return ex_id;
-    }
-
-    public void setEx_id(Integer ex_id) {
-        this.ex_id = ex_id;
     }
 
     public String getAdmin_name() {
@@ -48,7 +39,6 @@ public class Notice {
     public String toString() {
         return "Notice{" +
                 "system_id=" + system_id +
-                ", ex_id=" + ex_id +
                 ", admin_name='" + admin_name + '\'' +
                 ", admin_mail='" + admin_mail + '\'' +
                 '}';

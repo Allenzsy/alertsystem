@@ -18,18 +18,6 @@ import java.util.Date;
 @Controller
 public class SenderController {
 
-    @GetMapping(value = "/senderGet")
-    public String sendMailToAdmin1(@RequestParam(value = "sid") Long systemId,
-                                  @RequestParam(value = "sname") String systemName,
-                                  @RequestParam(value = "eid") Long exId,
-                                  @RequestParam(value = "etime") Date exTime,
-                                  @RequestParam(value = "edesc") String exDescription) {
-
-
-
-        return String.format("已将系统%d的异常%d发送给相应负责人", systemId, exId);
-    }
-
     @ResponseBody
     @PostMapping(value = "/sender")
     public String sendMailToAdmin(HttpServletRequest request, HttpServletResponse response) {
@@ -39,6 +27,13 @@ public class SenderController {
 
         System.out.println(exMessage);
         return exMessage.toString();
+    }
+
+
+    @GetMapping(value = "/test")
+    public String test(@RequestParam(value = "sid") Long systemId,
+                       @RequestParam(value = "eid") Long exId) {
+        return String.format("已将系统%d的异常%d发送给相应负责人", systemId, exId);
     }
 
 

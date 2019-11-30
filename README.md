@@ -99,3 +99,52 @@
      ```java 
      void sendExMessage(ExMessage exMessage);
      ```
+
+
+
+
+
+
+
+
+
+t_system 第二范式
+
+id	name	描述	token
+
+
+
+t_exmessage 第二范式
+
+id	system_id	rank_id	异常描述
+
+
+
+t_rank
+
+id				rank					
+
+1		error/warning/info
+
+
+
+t_rule
+
+id		frequency	rank_id	sender_id
+
+
+
+t_sender
+
+id		config		
+
+
+
+t_user
+
+
+
+
+
+
+
