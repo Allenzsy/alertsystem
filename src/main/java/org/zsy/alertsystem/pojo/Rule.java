@@ -7,6 +7,10 @@ public class Rule {
 
     private Long rankId;
 
+    private Long systemId;
+
+    private Integer userId;
+
     private Integer senderId;
 
     public Integer getId() {
@@ -31,6 +35,22 @@ public class Rule {
 
     public void setRankId(Long rankId) {
         this.rankId = rankId;
+    }
+
+    public Long getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Long systemId) {
+        this.systemId = systemId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getSenderId() {

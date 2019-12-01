@@ -1,10 +1,11 @@
 package org.zsy.alertsystem.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.zsy.alertsystem.pojo.Rule;
 import org.zsy.alertsystem.pojo.RuleExample;
-import org.zsy.alertsystem.pojo.User;
 
 public interface RuleMapper {
     long countByExample(RuleExample example);
@@ -29,8 +30,6 @@ public interface RuleMapper {
 
     int updateByPrimaryKey(Rule record);
 
-    // for t_rule_user
-    int insertUserRule(Integer userId, Integer ruleId);
-
-    int selectRuleIdByUserId(Integer userId);
+    // 添加用systemId，userId，rankId的查询
+    List<Rule> selectBySURId(Map<String, Object> map);
 }

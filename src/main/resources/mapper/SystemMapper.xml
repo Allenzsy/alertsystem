@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.zsy.alertsystem.dao.RuleMapper">
-  <resultMap id="BaseResultMap" type="org.zsy.alertsystem.pojo.Rule">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="frequency" jdbcType="INTEGER" property="frequency" />
-    <result column="rank_id" jdbcType="BIGINT" property="rankId" />
-    <result column="system_id" jdbcType="BIGINT" property="systemId" />
+<mapper namespace="org.zsy.alertsystem.dao.SystemMapper">
+  <resultMap id="BaseResultMap" type="org.zsy.alertsystem.pojo.System">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="system_name" jdbcType="VARCHAR" property="systemName" />
+    <result column="system_description" jdbcType="VARCHAR" property="systemDescription" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="sender_id" jdbcType="INTEGER" property="senderId" />
+    <result column="token" jdbcType="CHAR" property="token" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, frequency, rank_id, system_id, user_id, sender_id
+    id, system_name, system_description, user_id, token
   </sql>
-  <select id="selectByExample" parameterType="org.zsy.alertsystem.pojo.RuleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.zsy.alertsystem.pojo.SystemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_rule
+    from t_system
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,99 +83,88 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_rule
-    where id = #{id,jdbcType=INTEGER}
+    from t_system
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_rule
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_system
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="org.zsy.alertsystem.pojo.RuleExample">
-    delete from t_rule
+  <delete id="deleteByExample" parameterType="org.zsy.alertsystem.pojo.SystemExample">
+    delete from t_system
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.zsy.alertsystem.pojo.Rule">
-    insert into t_rule (id, frequency, rank_id, 
-      system_id, user_id, sender_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{frequency,jdbcType=INTEGER}, #{rankId,jdbcType=BIGINT}, 
-      #{systemId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{senderId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="org.zsy.alertsystem.pojo.System">
+    insert into t_system (id, system_name, system_description, 
+      user_id, token)
+    values (#{id,jdbcType=BIGINT}, #{systemName,jdbcType=VARCHAR}, #{systemDescription,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{token,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.zsy.alertsystem.pojo.Rule">
-    insert into t_rule
+  <insert id="insertSelective" parameterType="org.zsy.alertsystem.pojo.System">
+    insert into t_system
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="frequency != null">
-        frequency,
+      <if test="systemName != null">
+        system_name,
       </if>
-      <if test="rankId != null">
-        rank_id,
-      </if>
-      <if test="systemId != null">
-        system_id,
+      <if test="systemDescription != null">
+        system_description,
       </if>
       <if test="userId != null">
         user_id,
       </if>
-      <if test="senderId != null">
-        sender_id,
+      <if test="token != null">
+        token,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="frequency != null">
-        #{frequency,jdbcType=INTEGER},
+      <if test="systemName != null">
+        #{systemName,jdbcType=VARCHAR},
       </if>
-      <if test="rankId != null">
-        #{rankId,jdbcType=BIGINT},
-      </if>
-      <if test="systemId != null">
-        #{systemId,jdbcType=BIGINT},
+      <if test="systemDescription != null">
+        #{systemDescription,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="senderId != null">
-        #{senderId,jdbcType=INTEGER},
+      <if test="token != null">
+        #{token,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.zsy.alertsystem.pojo.RuleExample" resultType="java.lang.Long">
-    select count(*) from t_rule
+  <select id="countByExample" parameterType="org.zsy.alertsystem.pojo.SystemExample" resultType="java.lang.Long">
+    select count(*) from t_system
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_rule
+    update t_system
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.frequency != null">
-        frequency = #{record.frequency,jdbcType=INTEGER},
+      <if test="record.systemName != null">
+        system_name = #{record.systemName,jdbcType=VARCHAR},
       </if>
-      <if test="record.rankId != null">
-        rank_id = #{record.rankId,jdbcType=BIGINT},
-      </if>
-      <if test="record.systemId != null">
-        system_id = #{record.systemId,jdbcType=BIGINT},
+      <if test="record.systemDescription != null">
+        system_description = #{record.systemDescription,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.senderId != null">
-        sender_id = #{record.senderId,jdbcType=INTEGER},
+      <if test="record.token != null">
+        token = #{record.token,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,53 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_rule
-    set id = #{record.id,jdbcType=INTEGER},
-      frequency = #{record.frequency,jdbcType=INTEGER},
-      rank_id = #{record.rankId,jdbcType=BIGINT},
-      system_id = #{record.systemId,jdbcType=BIGINT},
+    update t_system
+    set id = #{record.id,jdbcType=BIGINT},
+      system_name = #{record.systemName,jdbcType=VARCHAR},
+      system_description = #{record.systemDescription,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
-      sender_id = #{record.senderId,jdbcType=INTEGER}
+      token = #{record.token,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.alertsystem.pojo.Rule">
-    update t_rule
+  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.alertsystem.pojo.System">
+    update t_system
     <set>
-      <if test="frequency != null">
-        frequency = #{frequency,jdbcType=INTEGER},
+      <if test="systemName != null">
+        system_name = #{systemName,jdbcType=VARCHAR},
       </if>
-      <if test="rankId != null">
-        rank_id = #{rankId,jdbcType=BIGINT},
-      </if>
-      <if test="systemId != null">
-        system_id = #{systemId,jdbcType=BIGINT},
+      <if test="systemDescription != null">
+        system_description = #{systemDescription,jdbcType=VARCHAR},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="senderId != null">
-        sender_id = #{senderId,jdbcType=INTEGER},
+      <if test="token != null">
+        token = #{token,jdbcType=CHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.zsy.alertsystem.pojo.Rule">
-    update t_rule
-    set frequency = #{frequency,jdbcType=INTEGER},
-      rank_id = #{rankId,jdbcType=BIGINT},
-      system_id = #{systemId,jdbcType=BIGINT},
+  <update id="updateByPrimaryKey" parameterType="org.zsy.alertsystem.pojo.System">
+    update t_system
+    set system_name = #{systemName,jdbcType=VARCHAR},
+      system_description = #{systemDescription,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      sender_id = #{senderId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      token = #{token,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-
-  <select id="selectBySURId" parameterType="Hashmap" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from t_rule
-    where system_id = #{systemId} and user_id = #{userId} and rank_id = #{rankId}
-  </select>
-
 </mapper>

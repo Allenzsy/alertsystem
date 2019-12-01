@@ -1,16 +1,17 @@
 package org.zsy.alertsystem.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class RuleExample {
+public class SenderLogExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RuleExample() {
+    public SenderLogExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,126 +165,6 @@ public class RuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyIsNull() {
-            addCriterion("frequency is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyIsNotNull() {
-            addCriterion("frequency is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyEqualTo(Integer value) {
-            addCriterion("frequency =", value, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyNotEqualTo(Integer value) {
-            addCriterion("frequency <>", value, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyGreaterThan(Integer value) {
-            addCriterion("frequency >", value, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("frequency >=", value, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyLessThan(Integer value) {
-            addCriterion("frequency <", value, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyLessThanOrEqualTo(Integer value) {
-            addCriterion("frequency <=", value, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyIn(List<Integer> values) {
-            addCriterion("frequency in", values, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyNotIn(List<Integer> values) {
-            addCriterion("frequency not in", values, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyBetween(Integer value1, Integer value2) {
-            addCriterion("frequency between", value1, value2, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andFrequencyNotBetween(Integer value1, Integer value2) {
-            addCriterion("frequency not between", value1, value2, "frequency");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdIsNull() {
-            addCriterion("rank_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdIsNotNull() {
-            addCriterion("rank_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdEqualTo(Long value) {
-            addCriterion("rank_id =", value, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdNotEqualTo(Long value) {
-            addCriterion("rank_id <>", value, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdGreaterThan(Long value) {
-            addCriterion("rank_id >", value, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("rank_id >=", value, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdLessThan(Long value) {
-            addCriterion("rank_id <", value, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdLessThanOrEqualTo(Long value) {
-            addCriterion("rank_id <=", value, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdIn(List<Long> values) {
-            addCriterion("rank_id in", values, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdNotIn(List<Long> values) {
-            addCriterion("rank_id not in", values, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdBetween(Long value1, Long value2) {
-            addCriterion("rank_id between", value1, value2, "rankId");
-            return (Criteria) this;
-        }
-
-        public Criteria andRankIdNotBetween(Long value1, Long value2) {
-            addCriterion("rank_id not between", value1, value2, "rankId");
-            return (Criteria) this;
-        }
-
         public Criteria andSystemIdIsNull() {
             addCriterion("system_id is null");
             return (Criteria) this;
@@ -404,63 +285,133 @@ public class RuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdIsNull() {
-            addCriterion("sender_id is null");
+        public Criteria andSendContentIsNull() {
+            addCriterion("send_content is null");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdIsNotNull() {
-            addCriterion("sender_id is not null");
+        public Criteria andSendContentIsNotNull() {
+            addCriterion("send_content is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdEqualTo(Integer value) {
-            addCriterion("sender_id =", value, "senderId");
+        public Criteria andSendContentEqualTo(String value) {
+            addCriterion("send_content =", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdNotEqualTo(Integer value) {
-            addCriterion("sender_id <>", value, "senderId");
+        public Criteria andSendContentNotEqualTo(String value) {
+            addCriterion("send_content <>", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdGreaterThan(Integer value) {
-            addCriterion("sender_id >", value, "senderId");
+        public Criteria andSendContentGreaterThan(String value) {
+            addCriterion("send_content >", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sender_id >=", value, "senderId");
+        public Criteria andSendContentGreaterThanOrEqualTo(String value) {
+            addCriterion("send_content >=", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdLessThan(Integer value) {
-            addCriterion("sender_id <", value, "senderId");
+        public Criteria andSendContentLessThan(String value) {
+            addCriterion("send_content <", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdLessThanOrEqualTo(Integer value) {
-            addCriterion("sender_id <=", value, "senderId");
+        public Criteria andSendContentLessThanOrEqualTo(String value) {
+            addCriterion("send_content <=", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdIn(List<Integer> values) {
-            addCriterion("sender_id in", values, "senderId");
+        public Criteria andSendContentLike(String value) {
+            addCriterion("send_content like", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdNotIn(List<Integer> values) {
-            addCriterion("sender_id not in", values, "senderId");
+        public Criteria andSendContentNotLike(String value) {
+            addCriterion("send_content not like", value, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdBetween(Integer value1, Integer value2) {
-            addCriterion("sender_id between", value1, value2, "senderId");
+        public Criteria andSendContentIn(List<String> values) {
+            addCriterion("send_content in", values, "sendContent");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("sender_id not between", value1, value2, "senderId");
+        public Criteria andSendContentNotIn(List<String> values) {
+            addCriterion("send_content not in", values, "sendContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendContentBetween(String value1, String value2) {
+            addCriterion("send_content between", value1, value2, "sendContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendContentNotBetween(String value1, String value2) {
+            addCriterion("send_content not between", value1, value2, "sendContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeIsNull() {
+            addCriterion("sendtime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeIsNotNull() {
+            addCriterion("sendtime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeEqualTo(Date value) {
+            addCriterion("sendtime =", value, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeNotEqualTo(Date value) {
+            addCriterion("sendtime <>", value, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeGreaterThan(Date value) {
+            addCriterion("sendtime >", value, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("sendtime >=", value, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeLessThan(Date value) {
+            addCriterion("sendtime <", value, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeLessThanOrEqualTo(Date value) {
+            addCriterion("sendtime <=", value, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeIn(List<Date> values) {
+            addCriterion("sendtime in", values, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeNotIn(List<Date> values) {
+            addCriterion("sendtime not in", values, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeBetween(Date value1, Date value2) {
+            addCriterion("sendtime between", value1, value2, "sendtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendtimeNotBetween(Date value1, Date value2) {
+            addCriterion("sendtime not between", value1, value2, "sendtime");
             return (Criteria) this;
         }
     }

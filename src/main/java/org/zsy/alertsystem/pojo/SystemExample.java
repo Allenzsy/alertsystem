@@ -3,14 +3,14 @@ package org.zsy.alertsystem.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleExample {
+public class SystemExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RuleExample() {
+    public SystemExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -114,233 +114,193 @@ public class RuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyIsNull() {
-            addCriterion("frequency is null");
+        public Criteria andSystemNameIsNull() {
+            addCriterion("system_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyIsNotNull() {
-            addCriterion("frequency is not null");
+        public Criteria andSystemNameIsNotNull() {
+            addCriterion("system_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyEqualTo(Integer value) {
-            addCriterion("frequency =", value, "frequency");
+        public Criteria andSystemNameEqualTo(String value) {
+            addCriterion("system_name =", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyNotEqualTo(Integer value) {
-            addCriterion("frequency <>", value, "frequency");
+        public Criteria andSystemNameNotEqualTo(String value) {
+            addCriterion("system_name <>", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyGreaterThan(Integer value) {
-            addCriterion("frequency >", value, "frequency");
+        public Criteria andSystemNameGreaterThan(String value) {
+            addCriterion("system_name >", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("frequency >=", value, "frequency");
+        public Criteria andSystemNameGreaterThanOrEqualTo(String value) {
+            addCriterion("system_name >=", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyLessThan(Integer value) {
-            addCriterion("frequency <", value, "frequency");
+        public Criteria andSystemNameLessThan(String value) {
+            addCriterion("system_name <", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyLessThanOrEqualTo(Integer value) {
-            addCriterion("frequency <=", value, "frequency");
+        public Criteria andSystemNameLessThanOrEqualTo(String value) {
+            addCriterion("system_name <=", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyIn(List<Integer> values) {
-            addCriterion("frequency in", values, "frequency");
+        public Criteria andSystemNameLike(String value) {
+            addCriterion("system_name like", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyNotIn(List<Integer> values) {
-            addCriterion("frequency not in", values, "frequency");
+        public Criteria andSystemNameNotLike(String value) {
+            addCriterion("system_name not like", value, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyBetween(Integer value1, Integer value2) {
-            addCriterion("frequency between", value1, value2, "frequency");
+        public Criteria andSystemNameIn(List<String> values) {
+            addCriterion("system_name in", values, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andFrequencyNotBetween(Integer value1, Integer value2) {
-            addCriterion("frequency not between", value1, value2, "frequency");
+        public Criteria andSystemNameNotIn(List<String> values) {
+            addCriterion("system_name not in", values, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdIsNull() {
-            addCriterion("rank_id is null");
+        public Criteria andSystemNameBetween(String value1, String value2) {
+            addCriterion("system_name between", value1, value2, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdIsNotNull() {
-            addCriterion("rank_id is not null");
+        public Criteria andSystemNameNotBetween(String value1, String value2) {
+            addCriterion("system_name not between", value1, value2, "systemName");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdEqualTo(Long value) {
-            addCriterion("rank_id =", value, "rankId");
+        public Criteria andSystemDescriptionIsNull() {
+            addCriterion("system_description is null");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdNotEqualTo(Long value) {
-            addCriterion("rank_id <>", value, "rankId");
+        public Criteria andSystemDescriptionIsNotNull() {
+            addCriterion("system_description is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdGreaterThan(Long value) {
-            addCriterion("rank_id >", value, "rankId");
+        public Criteria andSystemDescriptionEqualTo(String value) {
+            addCriterion("system_description =", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("rank_id >=", value, "rankId");
+        public Criteria andSystemDescriptionNotEqualTo(String value) {
+            addCriterion("system_description <>", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdLessThan(Long value) {
-            addCriterion("rank_id <", value, "rankId");
+        public Criteria andSystemDescriptionGreaterThan(String value) {
+            addCriterion("system_description >", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdLessThanOrEqualTo(Long value) {
-            addCriterion("rank_id <=", value, "rankId");
+        public Criteria andSystemDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("system_description >=", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdIn(List<Long> values) {
-            addCriterion("rank_id in", values, "rankId");
+        public Criteria andSystemDescriptionLessThan(String value) {
+            addCriterion("system_description <", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdNotIn(List<Long> values) {
-            addCriterion("rank_id not in", values, "rankId");
+        public Criteria andSystemDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("system_description <=", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdBetween(Long value1, Long value2) {
-            addCriterion("rank_id between", value1, value2, "rankId");
+        public Criteria andSystemDescriptionLike(String value) {
+            addCriterion("system_description like", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andRankIdNotBetween(Long value1, Long value2) {
-            addCriterion("rank_id not between", value1, value2, "rankId");
+        public Criteria andSystemDescriptionNotLike(String value) {
+            addCriterion("system_description not like", value, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andSystemIdIsNull() {
-            addCriterion("system_id is null");
+        public Criteria andSystemDescriptionIn(List<String> values) {
+            addCriterion("system_description in", values, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andSystemIdIsNotNull() {
-            addCriterion("system_id is not null");
+        public Criteria andSystemDescriptionNotIn(List<String> values) {
+            addCriterion("system_description not in", values, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andSystemIdEqualTo(Long value) {
-            addCriterion("system_id =", value, "systemId");
+        public Criteria andSystemDescriptionBetween(String value1, String value2) {
+            addCriterion("system_description between", value1, value2, "systemDescription");
             return (Criteria) this;
         }
 
-        public Criteria andSystemIdNotEqualTo(Long value) {
-            addCriterion("system_id <>", value, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdGreaterThan(Long value) {
-            addCriterion("system_id >", value, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("system_id >=", value, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdLessThan(Long value) {
-            addCriterion("system_id <", value, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdLessThanOrEqualTo(Long value) {
-            addCriterion("system_id <=", value, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdIn(List<Long> values) {
-            addCriterion("system_id in", values, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdNotIn(List<Long> values) {
-            addCriterion("system_id not in", values, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdBetween(Long value1, Long value2) {
-            addCriterion("system_id between", value1, value2, "systemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemIdNotBetween(Long value1, Long value2) {
-            addCriterion("system_id not between", value1, value2, "systemId");
+        public Criteria andSystemDescriptionNotBetween(String value1, String value2) {
+            addCriterion("system_description not between", value1, value2, "systemDescription");
             return (Criteria) this;
         }
 
@@ -404,63 +364,73 @@ public class RuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdIsNull() {
-            addCriterion("sender_id is null");
+        public Criteria andTokenIsNull() {
+            addCriterion("token is null");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdIsNotNull() {
-            addCriterion("sender_id is not null");
+        public Criteria andTokenIsNotNull() {
+            addCriterion("token is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdEqualTo(Integer value) {
-            addCriterion("sender_id =", value, "senderId");
+        public Criteria andTokenEqualTo(String value) {
+            addCriterion("token =", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdNotEqualTo(Integer value) {
-            addCriterion("sender_id <>", value, "senderId");
+        public Criteria andTokenNotEqualTo(String value) {
+            addCriterion("token <>", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdGreaterThan(Integer value) {
-            addCriterion("sender_id >", value, "senderId");
+        public Criteria andTokenGreaterThan(String value) {
+            addCriterion("token >", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sender_id >=", value, "senderId");
+        public Criteria andTokenGreaterThanOrEqualTo(String value) {
+            addCriterion("token >=", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdLessThan(Integer value) {
-            addCriterion("sender_id <", value, "senderId");
+        public Criteria andTokenLessThan(String value) {
+            addCriterion("token <", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdLessThanOrEqualTo(Integer value) {
-            addCriterion("sender_id <=", value, "senderId");
+        public Criteria andTokenLessThanOrEqualTo(String value) {
+            addCriterion("token <=", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdIn(List<Integer> values) {
-            addCriterion("sender_id in", values, "senderId");
+        public Criteria andTokenLike(String value) {
+            addCriterion("token like", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdNotIn(List<Integer> values) {
-            addCriterion("sender_id not in", values, "senderId");
+        public Criteria andTokenNotLike(String value) {
+            addCriterion("token not like", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdBetween(Integer value1, Integer value2) {
-            addCriterion("sender_id between", value1, value2, "senderId");
+        public Criteria andTokenIn(List<String> values) {
+            addCriterion("token in", values, "token");
             return (Criteria) this;
         }
 
-        public Criteria andSenderIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("sender_id not between", value1, value2, "senderId");
+        public Criteria andTokenNotIn(List<String> values) {
+            addCriterion("token not in", values, "token");
+            return (Criteria) this;
+        }
+
+        public Criteria andTokenBetween(String value1, String value2) {
+            addCriterion("token between", value1, value2, "token");
+            return (Criteria) this;
+        }
+
+        public Criteria andTokenNotBetween(String value1, String value2) {
+            addCriterion("token not between", value1, value2, "token");
             return (Criteria) this;
         }
     }

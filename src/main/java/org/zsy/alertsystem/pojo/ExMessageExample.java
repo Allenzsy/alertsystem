@@ -295,6 +295,126 @@ public class ExMessageExample {
             return (Criteria) this;
         }
 
+        public Criteria andRankIdIsNull() {
+            addCriterion("rank_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdIsNotNull() {
+            addCriterion("rank_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdEqualTo(Integer value) {
+            addCriterion("rank_id =", value, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdNotEqualTo(Integer value) {
+            addCriterion("rank_id <>", value, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdGreaterThan(Integer value) {
+            addCriterion("rank_id >", value, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rank_id >=", value, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdLessThan(Integer value) {
+            addCriterion("rank_id <", value, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdLessThanOrEqualTo(Integer value) {
+            addCriterion("rank_id <=", value, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdIn(List<Integer> values) {
+            addCriterion("rank_id in", values, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdNotIn(List<Integer> values) {
+            addCriterion("rank_id not in", values, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdBetween(Integer value1, Integer value2) {
+            addCriterion("rank_id between", value1, value2, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRankIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("rank_id not between", value1, value2, "rankId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("user_id =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("user_id <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("user_id >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_id >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("user_id <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_id <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("user_id in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("user_id not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_id between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
         public Criteria andExDescriptionIsNull() {
             addCriterion("ex_description is null");
             return (Criteria) this;

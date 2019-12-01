@@ -46,28 +46,37 @@
         <!-- 可以配置多个，用于指定生成数据库中的那个表的底层类，可以指定生成的实体类的name，
              enableCountXXX属性可以去除不需要的sql方法，其中columnOverride可以指定表中使用的枚举类，
              ignoreColumn可以忽略表中的字段，columnOverride和ignoreColumn可以指定0个或多个。-->
-        <table schema="alertsystem" tableName="t_exmessage"
-               enableCountByExample="true"
-               enableUpdateByExample="false"
-               domainObjectName="ExMessage">
-        </table>
-
-        <table schema="alertsystem" tableName="t_rule"
-               enableCountByExample="true"
-               domainObjectName="Rule">
-        </table>
-
-
-        <table schema="alertsystem" tableName="t_user"
-               enableCountByExample="true"
-               domainObjectName="User">
-        </table>
-
-<!--        <table schema="alertsystem" tableName="claim_image_info" enableCountByExample="false" domainObjectName="ClaimImageInfo">-->
-<!--            <columnOverride column="image_type" javaType="com.jd.ins.personal.claim.domain.enums.ImageType" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>-->
-<!--            <ignoreColumn column="create_time"/>-->
-<!--            <ignoreColumn column="update_time"/>-->
+<!--        <table schema="alertsystem" tableName="t_exmessage"-->
+<!--               enableCountByExample="true"-->
+<!--               enableUpdateByExample="false"-->
+<!--               domainObjectName="ExMessage">-->
 <!--        </table>-->
+
+<!--        <table schema="alertsystem" tableName="t_rule"-->
+<!--               enableCountByExample="true"-->
+<!--               domainObjectName="Rule">-->
+<!--        </table>-->
+
+
+<!--        <table schema="alertsystem" tableName="t_user"-->
+<!--               enableCountByExample="true"-->
+<!--               domainObjectName="User">-->
+<!--        </table>-->
+
+        <table schema="alertsystem" tableName="t_senderlog"
+               enableCountByExample="true"
+               domainObjectName="SenderLog">
+        </table>
+
+        <table schema="alertsystem" tableName="t_sender"
+               enableCountByExample="true"
+               domainObjectName="Sender">
+        </table>
+
+        <table schema="alertsystem" tableName="t_system"
+               enableCountByExample="true"
+               domainObjectName="System">
+        </table>
 
     </context>
 </generatorConfiguration>

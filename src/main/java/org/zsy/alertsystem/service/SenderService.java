@@ -1,6 +1,9 @@
 package org.zsy.alertsystem.service;
 
 import org.zsy.alertsystem.pojo.ExMessage;
+import org.zsy.alertsystem.pojo.Sender;
+import org.zsy.alertsystem.pojo.SenderLog;
+import org.zsy.alertsystem.pojo.User;
 
 import java.util.Date;
 
@@ -11,14 +14,10 @@ import java.util.Date;
  */
 public interface SenderService {
 
-    /**
-     * 根据一定时间间隔检查是否需要发送邮件给负责人
-     * @param newExTime
-     * @param exMessage
-     * @return
-     */
-    boolean checkNeedToSend(Date newExTime, ExMessage exMessage);
+    SenderLog sendExMessage(Integer senderId, User user, ExMessage exMessage);
 
-    void sendExMessage(ExMessage exMessage);
+    Sender getSender(Integer id);
+
+    void addSenderLog();
 
 }

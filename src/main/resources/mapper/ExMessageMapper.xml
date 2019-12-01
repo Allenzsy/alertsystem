@@ -5,6 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="system_id" jdbcType="BIGINT" property="systemId" />
     <result column="token" jdbcType="CHAR" property="token" />
+    <result column="rank_id" jdbcType="INTEGER" property="rankId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="ex_description" jdbcType="VARCHAR" property="exDescription" />
     <result column="ex_occurtime" jdbcType="TIMESTAMP" property="exOccurtime" />
     <result column="ex_createtime" jdbcType="TIMESTAMP" property="exCreatetime" />
@@ -39,7 +41,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, system_id, token, ex_description, ex_occurtime, ex_createtime
+    id, system_id, token, rank_id, user_id, ex_description, ex_occurtime, ex_createtime
   </sql>
   <select id="selectByExample" parameterType="org.zsy.alertsystem.pojo.ExMessageExample" resultMap="BaseResultMap">
     select
@@ -72,12 +74,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.zsy.alertsystem.pojo.ExMessage">
-    insert into t_exmessage (system_id, token,
-      ex_description, ex_occurtime, ex_createtime
-      )
-    values (#{systemId,jdbcType=BIGINT}, #{token,jdbcType=CHAR},
-      #{exDescription,jdbcType=VARCHAR}, #{exOccurtime,jdbcType=TIMESTAMP}
-      )
+    insert into t_exmessage (id, system_id, token, 
+      rank_id, user_id, ex_description, 
+      ex_occurtime, ex_createtime)
+    values (#{id,jdbcType=INTEGER}, #{systemId,jdbcType=BIGINT}, #{token,jdbcType=CHAR}, 
+      #{rankId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{exDescription,jdbcType=VARCHAR}, 
+      #{exOccurtime,jdbcType=TIMESTAMP}, #{exCreatetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="org.zsy.alertsystem.pojo.ExMessage">
     insert into t_exmessage
@@ -90,6 +92,12 @@
       </if>
       <if test="token != null">
         token,
+      </if>
+      <if test="rankId != null">
+        rank_id,
+      </if>
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="exDescription != null">
         ex_description,
@@ -110,6 +118,12 @@
       </if>
       <if test="token != null">
         #{token,jdbcType=CHAR},
+      </if>
+      <if test="rankId != null">
+        #{rankId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="exDescription != null">
         #{exDescription,jdbcType=VARCHAR},
@@ -137,6 +151,12 @@
       <if test="token != null">
         token = #{token,jdbcType=CHAR},
       </if>
+      <if test="rankId != null">
+        rank_id = #{rankId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
       <if test="exDescription != null">
         ex_description = #{exDescription,jdbcType=VARCHAR},
       </if>
@@ -153,6 +173,8 @@
     update t_exmessage
     set system_id = #{systemId,jdbcType=BIGINT},
       token = #{token,jdbcType=CHAR},
+      rank_id = #{rankId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       ex_description = #{exDescription,jdbcType=VARCHAR},
       ex_occurtime = #{exOccurtime,jdbcType=TIMESTAMP},
       ex_createtime = #{exCreatetime,jdbcType=TIMESTAMP}

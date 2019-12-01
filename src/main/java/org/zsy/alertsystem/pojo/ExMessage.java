@@ -9,6 +9,10 @@ public class ExMessage {
 
     private String token;
 
+    private Integer rankId;
+
+    private Integer userId;
+
     private String exDescription;
 
     private Date exOccurtime;
@@ -39,6 +43,22 @@ public class ExMessage {
         this.token = token == null ? null : token.trim();
     }
 
+    public Integer getRankId() {
+        return rankId;
+    }
+
+    public void setRankId(Integer rankId) {
+        this.rankId = rankId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public String getExDescription() {
         return exDescription;
     }
@@ -61,5 +81,19 @@ public class ExMessage {
 
     public void setExCreatetime(Date exCreatetime) {
         this.exCreatetime = exCreatetime;
+    }
+
+    @Override
+    public String toString() {
+        return "ExMessage{" +
+                "id=" + id +
+                ", systemId=" + systemId +
+                ", token='" + token + '\'' +
+                ", rankId=" + rankId +
+                ", userId=" + userId +
+                ", exDescription='" + exDescription + '\'' +
+                ", exOccurtime=" + exOccurtime +
+                ", exCreatetime=" + exCreatetime +
+                '}';
     }
 }

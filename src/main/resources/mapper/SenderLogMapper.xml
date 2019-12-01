@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.zsy.alertsystem.dao.RuleMapper">
-  <resultMap id="BaseResultMap" type="org.zsy.alertsystem.pojo.Rule">
+<mapper namespace="org.zsy.alertsystem.dao.SenderLogMapper">
+  <resultMap id="BaseResultMap" type="org.zsy.alertsystem.pojo.SenderLog">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="frequency" jdbcType="INTEGER" property="frequency" />
-    <result column="rank_id" jdbcType="BIGINT" property="rankId" />
     <result column="system_id" jdbcType="BIGINT" property="systemId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="sender_id" jdbcType="INTEGER" property="senderId" />
+    <result column="send_content" jdbcType="VARCHAR" property="sendContent" />
+    <result column="sendtime" jdbcType="TIMESTAMP" property="sendtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, frequency, rank_id, system_id, user_id, sender_id
+    id, system_id, user_id, send_content, sendtime
   </sql>
-  <select id="selectByExample" parameterType="org.zsy.alertsystem.pojo.RuleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.zsy.alertsystem.pojo.SenderLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_rule
+    from t_senderlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,38 +86,30 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_rule
+    from t_senderlog
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_rule
+    delete from t_senderlog
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.zsy.alertsystem.pojo.RuleExample">
-    delete from t_rule
+  <delete id="deleteByExample" parameterType="org.zsy.alertsystem.pojo.SenderLogExample">
+    delete from t_senderlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.zsy.alertsystem.pojo.Rule">
-    insert into t_rule (id, frequency, rank_id, 
-      system_id, user_id, sender_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{frequency,jdbcType=INTEGER}, #{rankId,jdbcType=BIGINT}, 
-      #{systemId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{senderId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="org.zsy.alertsystem.pojo.SenderLog">
+    insert into t_senderlog (id, system_id, user_id, 
+      send_content, sendtime)
+    values (#{id,jdbcType=INTEGER}, #{systemId,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, 
+      #{sendContent,jdbcType=VARCHAR}, #{sendtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="org.zsy.alertsystem.pojo.Rule">
-    insert into t_rule
+  <insert id="insertSelective" parameterType="org.zsy.alertsystem.pojo.SenderLog">
+    insert into t_senderlog
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
-      </if>
-      <if test="frequency != null">
-        frequency,
-      </if>
-      <if test="rankId != null">
-        rank_id,
       </if>
       <if test="systemId != null">
         system_id,
@@ -126,19 +117,16 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="senderId != null">
-        sender_id,
+      <if test="sendContent != null">
+        send_content,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
-      </if>
-      <if test="frequency != null">
-        #{frequency,jdbcType=INTEGER},
-      </if>
-      <if test="rankId != null">
-        #{rankId,jdbcType=BIGINT},
       </if>
       <if test="systemId != null">
         #{systemId,jdbcType=BIGINT},
@@ -146,28 +134,25 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="senderId != null">
-        #{senderId,jdbcType=INTEGER},
+      <if test="sendContent != null">
+        #{sendContent,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.zsy.alertsystem.pojo.RuleExample" resultType="java.lang.Long">
-    select count(*) from t_rule
+  <select id="countByExample" parameterType="org.zsy.alertsystem.pojo.SenderLogExample" resultType="java.lang.Long">
+    select count(*) from t_senderlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_rule
+    update t_senderlog
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.frequency != null">
-        frequency = #{record.frequency,jdbcType=INTEGER},
-      </if>
-      <if test="record.rankId != null">
-        rank_id = #{record.rankId,jdbcType=BIGINT},
       </if>
       <if test="record.systemId != null">
         system_id = #{record.systemId,jdbcType=BIGINT},
@@ -175,8 +160,11 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.senderId != null">
-        sender_id = #{record.senderId,jdbcType=INTEGER},
+      <if test="record.sendContent != null">
+        send_content = #{record.sendContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendtime != null">
+        sendtime = #{record.sendtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -184,53 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_rule
+    update t_senderlog
     set id = #{record.id,jdbcType=INTEGER},
-      frequency = #{record.frequency,jdbcType=INTEGER},
-      rank_id = #{record.rankId,jdbcType=BIGINT},
       system_id = #{record.systemId,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=INTEGER},
-      sender_id = #{record.senderId,jdbcType=INTEGER}
+      send_content = #{record.sendContent,jdbcType=VARCHAR},
+      sendtime = #{record.sendtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.alertsystem.pojo.Rule">
-    update t_rule
+  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.alertsystem.pojo.SenderLog">
+    update t_senderlog
     <set>
-      <if test="frequency != null">
-        frequency = #{frequency,jdbcType=INTEGER},
-      </if>
-      <if test="rankId != null">
-        rank_id = #{rankId,jdbcType=BIGINT},
-      </if>
       <if test="systemId != null">
         system_id = #{systemId,jdbcType=BIGINT},
       </if>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="senderId != null">
-        sender_id = #{senderId,jdbcType=INTEGER},
+      <if test="sendContent != null">
+        send_content = #{sendContent,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.zsy.alertsystem.pojo.Rule">
-    update t_rule
-    set frequency = #{frequency,jdbcType=INTEGER},
-      rank_id = #{rankId,jdbcType=BIGINT},
-      system_id = #{systemId,jdbcType=BIGINT},
+  <update id="updateByPrimaryKey" parameterType="org.zsy.alertsystem.pojo.SenderLog">
+    update t_senderlog
+    set system_id = #{systemId,jdbcType=BIGINT},
       user_id = #{userId,jdbcType=INTEGER},
-      sender_id = #{senderId,jdbcType=INTEGER}
+      send_content = #{sendContent,jdbcType=VARCHAR},
+      sendtime = #{sendtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="selectBySURId" parameterType="Hashmap" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from t_rule
-    where system_id = #{systemId} and user_id = #{userId} and rank_id = #{rankId}
-  </select>
-
 </mapper>
