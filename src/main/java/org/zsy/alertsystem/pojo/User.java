@@ -1,64 +1,53 @@
 package org.zsy.alertsystem.pojo;
 
-import java.io.Serializable;
+public class User {
+    private Integer id;
 
-/**
- * @author allenzsy
- * @date 2019/11/28
- * @time 20:53
- */
-public class User implements Serializable {
+    private String userName;
 
-    private static final long serialVersionUID = 1L;
-    private Long id;
-    private String name;
-    private String password;
+    private String mail;
 
-    public User() {
-    }
+    private String qq;
 
-    public User(Long id, String name, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-    }
+    private String phone;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getMail() {
+        return mail;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMail(String mail) {
+        this.mail = mail == null ? null : mail.trim();
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq == null ? null : qq.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 }
-
-

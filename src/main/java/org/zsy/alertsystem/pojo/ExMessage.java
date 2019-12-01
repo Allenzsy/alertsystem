@@ -2,25 +2,24 @@ package org.zsy.alertsystem.pojo;
 
 import java.util.Date;
 
-/**
- * @author allenzsy
- * @date 2019/11/29
- * @time 9:58
- */
 public class ExMessage {
+    private Integer id;
 
-    private Long id;
     private Long systemId;
-    private String systemName;
-    private Long exId;
-    private String exDescription;
-    private Date exTime;
 
-    public Long getId() {
+    private String token;
+
+    private String exDescription;
+
+    private Date exOccurtime;
+
+    private Date exCreatetime;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,20 +31,12 @@ public class ExMessage {
         this.systemId = systemId;
     }
 
-    public String getSystemName() {
-        return systemName;
+    public String getToken() {
+        return token;
     }
 
-    public void setSystemName(String systemName) {
-        this.systemName = systemName;
-    }
-
-    public Long getExId() {
-        return exId;
-    }
-
-    public void setExId(Long exId) {
-        this.exId = exId;
+    public void setToken(String token) {
+        this.token = token == null ? null : token.trim();
     }
 
     public String getExDescription() {
@@ -53,26 +44,22 @@ public class ExMessage {
     }
 
     public void setExDescription(String exDescription) {
-        this.exDescription = exDescription;
+        this.exDescription = exDescription == null ? null : exDescription.trim();
     }
 
-    public Date getExTime() {
-        return exTime;
+    public Date getExOccurtime() {
+        return exOccurtime;
     }
 
-    public void setExTime(Date exTime) {
-        this.exTime = exTime;
+    public void setExOccurtime(Date exOccurtime) {
+        this.exOccurtime = exOccurtime;
     }
 
-    @Override
-    public String toString() {
-        return "ExMessage{" +
-                "id=" + id +
-                ", systemId=" + systemId +
-                ", systemName='" + systemName + '\'' +
-                ", exId=" + exId +
-                ", exDescription='" + exDescription + '\'' +
-                ", exTime=" + exTime +
-                '}';
+    public Date getExCreatetime() {
+        return exCreatetime;
+    }
+
+    public void setExCreatetime(Date exCreatetime) {
+        this.exCreatetime = exCreatetime;
     }
 }

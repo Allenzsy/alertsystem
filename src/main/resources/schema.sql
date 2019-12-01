@@ -73,6 +73,9 @@ CREATE TABLE if not  exists `t_rank` (
 ) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET = utf8 COMMENT = '预警级别表';
 
 
+insert into t_rule (frequency, rank_id, sender_id)values (2, 200, 1);
+insert into t_rule_user (user_id, rule_id)values (1, 1);
+insert into t_user (user_name, mail, qq, phone) VALUES ('张经理', '986847686@qq.com', 986847686, 13241305509);
 
 insert into t_notice values (10001, '张经理', '986847686@qq.com');
 

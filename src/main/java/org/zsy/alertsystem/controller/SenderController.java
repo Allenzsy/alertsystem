@@ -3,8 +3,10 @@ package org.zsy.alertsystem.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.zsy.alertsystem.pojo.ExMessage;
+import org.zsy.alertsystem.service.ExMessageService;
 import org.zsy.alertsystem.util.JsonRequestUtil;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -18,12 +20,17 @@ import java.util.Date;
 @Controller
 public class SenderController {
 
+    @Resource
+    ExMessageService exMessageService;
+
     @ResponseBody
     @PostMapping(value = "/sender")
     public String sendMailToAdmin(HttpServletRequest request, HttpServletResponse response) {
 
         System.out.println(request);
         ExMessage exMessage = JsonRequestUtil.getPostJson(request, ExMessage.class);
+
+        exMessageService.addExMessage(exMessage);
 
         System.out.println(exMessage);
         return exMessage.toString();

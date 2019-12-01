@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 指定数据连接驱动 jar 地址 -->
+    <classPathEntry location="D:\java\apache-maven-3.6.1\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
+    <!-- context 元素用于指定生成一组对象的环境，例如指定要连接的数据库，要生成对象的类型和要处理的数据库中的表。
+                 其中的defaultModelType属性很重要，这个属性定义了MBG如何生成实体类，推荐使用flat模式，为每一张表只生成一个包含表所有字段的实体类 -->
+    <context id="alertsystem" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/alertsystem?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"
+                        userId="root"
+                        password="123456">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- javaModelGenerator 指定生成实体类的生成路径，trimStrings属性会对查询条件进行trim操作，默认值是false。-->
+        <javaModelGenerator targetPackage="org.zsy.alertsystem.pojo"
+                            targetProject="src\main\java">
+<!--            <property name="enableSubPackages" value="true"/>-->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+<!--            <property name="enableSubPackages" value="true"/>-->
+        </sqlMapGenerator>
+        <!-- 指定生成dao接口。 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.zsy.alertsystem.dao"
+                             targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 可以配置多个，用于指定生成数据库中的那个表的底层类，可以指定生成的实体类的name，
+             enableCountXXX属性可以去除不需要的sql方法，其中columnOverride可以指定表中使用的枚举类，
+             ignoreColumn可以忽略表中的字段，columnOverride和ignoreColumn可以指定0个或多个。-->
+        <table schema="alertsystem" tableName="t_exmessage"
+               enableCountByExample="true"
+               enableUpdateByExample="false"
+               domainObjectName="ExMessage">
+        </table>
+
+        <table schema="alertsystem" tableName="t_rule"
+               enableCountByExample="true"
+               domainObjectName="Rule">
+        </table>
+
+
+        <table schema="alertsystem" tableName="t_user"
+               enableCountByExample="true"
+               domainObjectName="User">
+        </table>
+
+<!--        <table schema="alertsystem" tableName="claim_image_info" enableCountByExample="false" domainObjectName="ClaimImageInfo">-->
+<!--            <columnOverride column="image_type" javaType="com.jd.ins.personal.claim.domain.enums.ImageType" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>-->
+<!--            <ignoreColumn column="create_time"/>-->
+<!--            <ignoreColumn column="update_time"/>-->
+<!--        </table>-->
+
+    </context>
+</generatorConfiguration>

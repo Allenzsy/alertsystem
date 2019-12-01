@@ -43,17 +43,18 @@
 
    用于存储系统发出的预警信息，当预警信息到达预警中台时入库，设计表格如下：
 
-	| 字段名         | 描述                     |
-	| -------------- | ------------------------ |
-	| id             | 与业务无关自增id         |
-	| system_id      | 发出预警信息的系统id     |
-	| token          | 用于验证系统             |
-	| rank_id        | 预警级别                 |
-	| ex_description | 异常信息的描述           |
-	| ex_occurtime   | 异常信息在系统发生的时间 |
-	| ex_createtime  | 预警信息入库时间         |
-	
-	在 id 建立自增主键，在 system_id 索引， 在 ex_occurtime建立索引加快查询排序
+   | 字段名         | 描述                     |
+   | -------------- | ------------------------ |
+   | id             | 与业务无关自增id         |
+   | system_id      | 发出预警信息的系统id     |
+   | token          | 用于验证系统             |
+   | rank_id        | 预警级别 id              |
+   | user_id        | 负责人 id                |
+   | ex_description | 异常信息的描述           |
+   | ex_occurtime   | 异常信息在系统发生的时间 |
+   | ex_createtime  | 预警信息入库时间         |
+
+   在 id 建立自增主键，在 system_id 索引， 在 ex_occurtime建立索引加快查询排序
 
 2. t_system 系统表
 
@@ -63,13 +64,6 @@
    | system_name        | 系统名称                                     |
    | system_description | 系统描述                                     |
    | token              | 用于验证系统，防止恶意调用预警中台暴露的接口 |
-
-3. t_system_user 系统-负责人映射表
-
-   | 字段名    | 描述                  |
-   | --------- | --------------------- |
-   | system_id | 发出预警信息的系统 id |
-   | user_id   | 负责人 id             |
 
 4. t_user 负责人表
 
@@ -81,23 +75,18 @@
    | qq        | qq         |
    | phone     | 手机号     |
 
-5. t_rule 发送通知规则表
+4. t_rule 发送通知规则表
 
-   按照负责人设置的规则，发送通知
+   按照负责人设置的规则，发送通知。
 
    | 字段名    | 描述              |
    | --------- | ----------------- |
    | id        | 发送通知的规则 id |
    | frequency | 发送频率          |
    | rank_id   | 预警级别 id       |
+   | system_id | 系统 id           |
+   | user_id   | 负责人 id         |
    | sender_id | 发送通知器 id     |
-
-6. t_rule_user 发送通知规则-负责人映射表
-
-   | 字段名  | 描述              |
-   | ------- | ----------------- |
-   | rule_id | 发送通知的规则 id |
-   | user_id | 负责人 id         |
 
 7. t_sender 发送器配置表
 
@@ -114,6 +103,20 @@
    | ------ | ---------------------------------- |
    | id     | 预警级别 id                        |
    | rank   | 预警级别 (e.g. error/warning/info) |
+
+8. t_senderlog 发送器日志表
+
+   用来记录已的发送通知，并利用发送通知规则判断是否需要发送
+
+   | **字段名**   | 描述      |
+   | ------------ | --------- |
+   | id           | 日志 id   |
+   | system_id    | 系统 id   |
+   | user_id      | 负责人 id |
+   | send_content | 发送内容  |
+   | sendtime     | 发送时间  |
+
+
 
 ### service层接口设计
 
@@ -164,6 +167,28 @@
 
 
 
+
+ExMessageService : 
+
+添加，删除， 修改，查询exmessage
+
+提供一个入库服务
+
+RuleService：
+
+添加，删除， 修改，查询rule
+
+提供依照规则判断是否需要发送通知服务
+
+SenderService:
+
+添加，删除，修改，查询sender
+
+提供发送通知服务
+
+UserSrvice:
+
+添加，删除， 修改，查询user
 
 
 

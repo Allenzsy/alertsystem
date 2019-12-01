@@ -1,19 +1,30 @@
 package org.zsy.alertsystem.dao;
 
-import org.springframework.stereotype.Component;
-import org.zsy.alertsystem.pojo.User;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.zsy.alertsystem.pojo.User;
+import org.zsy.alertsystem.pojo.UserExample;
 
-/**
- * @author allenzsy
- * @date 2019/11/28
- * @time 20:55
- */
-@Component
 public interface UserMapper {
+    long countByExample(UserExample example);
 
-    User findById(Long id);
-    List<User> findAll();
+    int deleteByExample(UserExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    List<User> selectByExample(UserExample example);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }

@@ -12,14 +12,9 @@ import java.util.List;
  */
 public interface ExMessageService {
 
-    void addExMessage(Long id,
-                      Long systemId,
-                      String systemName,
-                      Long exId,
-                      String exDescription,
-                      Date exTime);
+    void addExMessage(ExMessage exMessage);
 
-    List<ExMessage> getExMessageByUniteId(Integer systemId, Integer exId);
+    Long getExMessageCount(Long systemId);
 
     ExMessage getExMessageById(Integer id);
 
