@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -84,63 +84,20 @@
     }
 
 </style>
+
 <body>
-<div id="main">
-    <div class="top-head">
-        <div id="logo">logo</div>
-        <div id="title">预警中台后台管理系统</div>
-        <div id="per-mes">您好，admin。欢迎您使用后台管理系统！ </div>
-    </div>
-    <div class="left-menu">
-        <!-- 侧边栏标签页 -->
-        <ul class="nav nav-stacked">
-            <!-- 侧边栏选项 -->
-            <li role="presentation" class="active">
-                <a href="/exmessage/list" data-toggle="collapse" data-target="#list">预警信息查询</a>
-            </li>
-
-            <li role="presentation">
-                <a href="/system/list" data-toggle="collapse" data-target="#list1">系统管理</a>
-            </li>
-
-            <li role="presentation">
-                <!-- 选项控制data-target对应的显隐 -->
-                <a href="#" data-toggle="collapse" data-target="#list2">发送规则管理</a>
-                <!-- 隐藏的详细菜单 -->
-                <ul id="list2" class="collapse in">
-                    <li class="active">
-                        <a href="">发送规则设置</a>
-                    </li>
-                    <li>
-                        <a href="">发送器设置</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li role="presentation">
-                <a href="#">通知日志查询</a>
-            </li>
-            <li role="presentation">
-                <a href="/user/list">用户查询</a>
-            </li>
-        </ul>
-    </div>
-    <div class="right-content">
-
-        <div style="margin:10px;">
-            <ol class="breadcrumb">
-                <li class="active">Home</li>
-            </ol>
-            <div th:if="${allSystems} neq null">
-                <div th:replace="system_list :: systemTable"  ></div>
-            </div>
-            <div th:if="${allUsers} neq null">
-                <div th:replace="user_list :: userTable"  ></div>
-            </div>
-            <div th:if="${allExMessages} neq null">
-                <div th:replace="exMessage_list :: exmessageTable"  ></div>
-            </div>
-        </div>
+<div th:fragment="systemTable">
+    <div class="system_table">
+        <table border="1" width="300px" height="100px" cellspacing="10px">
+            <tr><td>ID</td><td>名称</td><td>描述</td><td>负责人</td><td>手机号</td></tr>
+            <tr th:each="memberEntry,memberStat:${allSystems}">
+                <td th:text="${memberStat.index + 1}"/>
+                <td th:text="${memberEntry.getKey()}"/>
+                <td th:text="${memberEntry.getValue().systemName}"/>
+                <td th:text="${memberEntry.getValue().systemName}"/>
+                <td th:text="${memberEntry.getValue().systemName}"/>
+            </tr>
+        </table>
     </div>
 </div>
 </body>

@@ -48,4 +48,15 @@ public class ExMessageServiceImpl implements ExMessageService {
     public void deleteExMessage(Integer systemId, Integer exId) {
 
     }
+
+    @Override
+    public List<ExMessage> getAllExMessage() {
+        ExMessageExample example = new ExMessageExample();
+        example.setOrderByClause("ex_createtime DESC");
+        ExMessageExample.Criteria criteria = example.createCriteria();
+        criteria.andIdIsNotNull();
+//        PageHelper.startPage(0, 10);
+        List<ExMessage> listExMessage = exMessageMapper.selectByExample(example);
+        return listExMessage;
+    }
 }

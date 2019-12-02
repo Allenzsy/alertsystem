@@ -96,11 +96,11 @@
         <ul class="nav nav-stacked">
             <!-- 侧边栏选项 -->
             <li role="presentation" class="active">
-                <a href="/exmessage/list" data-toggle="collapse" data-target="#list">预警信息查询</a>
+                <a href="#" data-toggle="collapse" data-target="#list">预警信息查询</a>
             </li>
 
             <li role="presentation">
-                <a href="/system/list" data-toggle="collapse" data-target="#list1">系统管理</a>
+                <a href="#" data-toggle="collapse" data-target="#list1">系统管理</a>
             </li>
 
             <li role="presentation">
@@ -131,15 +131,16 @@
             <ol class="breadcrumb">
                 <li class="active">Home</li>
             </ol>
-            <div th:if="${allSystems} neq null">
-                <div th:replace="system_list :: systemTable"  ></div>
-            </div>
-            <div th:if="${allUsers} neq null">
-                <div th:replace="user_list :: userTable"  ></div>
-            </div>
-            <div th:if="${allExMessages} neq null">
-                <div th:replace="exMessage_list :: exmessageTable"  ></div>
-            </div>
+            <table>
+                <tr><td>ID</td><td>姓名</td><td>邮箱</td><td>qq</td><td>手机号</td></tr>
+                <tr th:each="memberStat:${allUsers}">
+                    <td th:text="${memberStat.id + 1}"/>
+                    <td th:text="${memberStat.userName}"/>
+                    <td th:text="${memberStat.mail}"/>
+                    <td th:text="${memberStat.qq}"/>
+                    <td th:text="${memberStat.phone}"/>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

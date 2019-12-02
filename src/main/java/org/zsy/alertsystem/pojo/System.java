@@ -1,5 +1,7 @@
 package org.zsy.alertsystem.pojo;
 
+import java.util.Objects;
+
 public class System {
     private Long id;
 
@@ -49,5 +51,37 @@ public class System {
 
     public void setToken(String token) {
         this.token = token == null ? null : token.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "System{" +
+                "id=" + id +
+                ", systemName='" + systemName + '\'' +
+                ", systemDescription='" + systemDescription + '\'' +
+                ", userId=" + userId +
+                ", token='" + token + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof System)) {
+            return false;
+        }
+        System system = (System) o;
+        return id.equals(system.id) &&
+                systemName.equals(system.systemName) &&
+                systemDescription.equals(system.systemDescription) &&
+                userId.equals(system.userId) &&
+                token.equals(system.token);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, systemName, systemDescription, userId, token);
     }
 }

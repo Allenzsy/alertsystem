@@ -1,6 +1,11 @@
 package org.zsy.alertsystem.service;
 
 import org.zsy.alertsystem.pojo.ExMessage;
+import org.zsy.alertsystem.pojo.System;
+import org.zsy.alertsystem.pojo.User;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author allenzsy
@@ -10,5 +15,7 @@ import org.zsy.alertsystem.pojo.ExMessage;
 public interface SystemService {
 
     boolean checkSystem(ExMessage exMessage);
+
+    Map<String, System> getAllSystem();
 
 }

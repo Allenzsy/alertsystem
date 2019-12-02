@@ -75,6 +75,12 @@
             <version >1.5.4 </version >
         </dependency >
 
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.pagehelper</groupId>-->
+<!--            <artifactId>pagehelper</artifactId>-->
+<!--            <version>5.1.10</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 

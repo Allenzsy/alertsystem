@@ -20,4 +20,6 @@ public interface ExMessageService {
 
     void deleteExMessage(Integer systemId, Integer exId);
 
+    List<ExMessage> getAllExMessage();
+
 }
