@@ -6,6 +6,7 @@ import org.zsy.alertsystem.pojo.SenderLog;
 import org.zsy.alertsystem.pojo.User;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author allenzsy
@@ -17,5 +18,7 @@ public interface SenderService {
     SenderLog sendExMessage(Integer senderId, User user, ExMessage exMessage);
 
     Sender getSender(Integer id);
+
+    List<Sender> getAllSender();
 
 }

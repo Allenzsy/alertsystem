@@ -91,7 +91,7 @@
         <table border="1" width="300px" height="100px" cellspacing="10px">
             <tr><td>ID</td><td>名称</td><td>描述</td><td>负责人</td><td>手机号</td></tr>
             <tr th:each="memberEntry,memberStat:${allSystems}">
-                <td th:text="${memberStat.index + 1}"/>
+                <td th:text="${memberStat.index}"/>
                 <td th:text="${memberEntry.getKey()}"/>
                 <td th:text="${memberEntry.getValue().systemName}"/>
                 <td th:text="${memberEntry.getValue().systemName}"/>

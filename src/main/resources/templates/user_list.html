@@ -90,7 +90,7 @@
         <table border="1" width="300px" height="100px" cellspacing="10px">
             <tr><td>ID</td><td>姓名</td><td>邮箱</td><td>qq</td><td>手机号</td></tr>
             <tr th:each="memberStat:${allUsers}">
-                <td th:text="${memberStat.id + 1}"/>
+                <td th:text="${memberStat.id}"/>
                 <td th:text="${memberStat.userName}"/>
                 <td th:text="${memberStat.mail}"/>
                 <td th:text="${memberStat.qq}"/>

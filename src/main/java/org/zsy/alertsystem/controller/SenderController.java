@@ -1,11 +1,9 @@
 package org.zsy.alertsystem.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.zsy.alertsystem.pojo.ExMessage;
-import org.zsy.alertsystem.pojo.Rule;
-import org.zsy.alertsystem.pojo.SenderLog;
-import org.zsy.alertsystem.pojo.User;
+import org.zsy.alertsystem.pojo.*;
 import org.zsy.alertsystem.service.*;
 import org.zsy.alertsystem.util.JsonRequestUtil;
 
@@ -86,6 +84,14 @@ public class SenderController {
     public String test(@RequestParam(value = "sid") Long systemId,
                        @RequestParam(value = "eid") Long exId) {
         return String.format("已将系统%d的异常%d发送给相应负责人", systemId, exId);
+    }
+
+    @GetMapping(value = "/sender/list")
+    public String getAllUser(Model model) {
+        List<Sender> listSenders =  senderService.getAllSender();
+
+        model.addAttribute("listSenders", listSenders);
+        return "index";
     }
 
 

@@ -4,15 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
 import org.zsy.alertsystem.dao.SenderMapper;
 import org.zsy.alertsystem.dao.SystemMapper;
-import org.zsy.alertsystem.pojo.ExMessage;
-import org.zsy.alertsystem.pojo.Sender;
-import org.zsy.alertsystem.pojo.SenderLog;
-import org.zsy.alertsystem.pojo.User;
+import org.zsy.alertsystem.pojo.*;
 import org.zsy.alertsystem.service.SenderService;
 import org.zsy.alertsystem.util.SendMessageUtil;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * @author allenzsy
@@ -66,4 +64,12 @@ public class SenderServiceImpl implements SenderService {
         return senderMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public List<Sender> getAllSender() {
+        SenderExample example = new SenderExample();
+        SenderExample.Criteria criteria = example.createCriteria();
+        criteria.andIdIsNotNull();
+        List<Sender> listSender = senderMapper.selectByExample(example);
+        return listSender;
+    }
 }

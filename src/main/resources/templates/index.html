@@ -109,16 +109,16 @@
                 <!-- 隐藏的详细菜单 -->
                 <ul id="list2" class="collapse in">
                     <li class="active">
-                        <a href="">发送规则设置</a>
+                        <a href="/rule/list">发送规则设置</a>
                     </li>
                     <li>
-                        <a href="">发送器设置</a>
+                        <a href="/sender/list">发送器设置</a>
                     </li>
                 </ul>
             </li>
 
             <li role="presentation">
-                <a href="#">通知日志查询</a>
+                <a href="/senderLog/list">通知日志查询</a>
             </li>
             <li role="presentation">
                 <a href="/user/list">用户查询</a>
@@ -129,7 +129,10 @@
 
         <div style="margin:10px;">
             <ol class="breadcrumb">
-                <li class="active">Home</li>
+                <a href="/index">Home</a>
+<!--                <li class="active">-->
+<!--                    -->
+<!--                    Home</li>-->
             </ol>
             <div th:if="${allSystems} neq null">
                 <div th:replace="system_list :: systemTable"  ></div>
@@ -139,6 +142,15 @@
             </div>
             <div th:if="${allExMessages} neq null">
                 <div th:replace="exMessage_list :: exmessageTable"  ></div>
+            </div>
+            <div th:if="${allSenderLogs} neq null">
+                <div th:replace="sendLog_list :: senderLogTable"  ></div>
+            </div>
+            <div th:if="${listSenders} neq null">
+                <div th:replace="sender_list :: senderTable"  ></div>
+            </div>
+            <div th:if="${allRules} neq null">
+                <div th:replace="rule_list :: ruleTable"  ></div>
             </div>
         </div>
     </div>

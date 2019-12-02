@@ -21,4 +21,6 @@ public interface RuleService {
 
     void editRule(Integer id);
 
+    List<Rule> getAllRule();
+
 }

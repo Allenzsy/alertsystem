@@ -3,10 +3,7 @@ package org.zsy.alertsystem.service.impl;
 import org.springframework.stereotype.Service;
 import org.zsy.alertsystem.dao.ExMessageMapper;
 import org.zsy.alertsystem.dao.RuleMapper;
-import org.zsy.alertsystem.pojo.ExMessage;
-import org.zsy.alertsystem.pojo.ExMessageExample;
-import org.zsy.alertsystem.pojo.Rule;
-import org.zsy.alertsystem.pojo.User;
+import org.zsy.alertsystem.pojo.*;
 import org.zsy.alertsystem.service.RuleService;
 
 import javax.annotation.Resource;
@@ -71,5 +68,14 @@ public class RuleServiceImpl implements RuleService {
     @Override
     public void editRule(Integer id) {
 
+    }
+
+    @Override
+    public List<Rule> getAllRule() {
+        RuleExample example = new RuleExample();
+        RuleExample.Criteria criteria = example.createCriteria();
+        criteria.andIdIsNotNull();
+        List<Rule> listRule = ruleMapper.selectByExample(example);
+        return listRule;
     }
 }

@@ -15,8 +15,6 @@ public class IndexController {
 
     @GetMapping(value = "/index")
     public String show(Model model) {
-        model.addAttribute("uid", "123456789");
-        model.addAttribute("name", "Jerry");
         return "index";
     }
 }

@@ -85,19 +85,17 @@
 
 </style>
 <body>
-<div th:fragment="exmessageTable">
-    <div class="exmessage_table">
+<div th:fragment="ruleTable">
+    <div class="rule_table">
         <table border="1" width="300px" height="100px" cellspacing="10px">
-            <tr><td>ID</td><td>系统id</td><td>风险级别id</td><td>负责人id</td><td>异常描述</td><td>异常发生时间</td><td>入库时间</td><td>token</td></tr>
-            <tr th:each="memberStat:${allExMessages}">
+            <tr><td>ID</td><td>发送频率</td><td>预警级别id</td><td>系统id</td><td>负责人id</td><td>发送器id</td></tr>
+            <tr th:each="memberStat:${allRules}">
                 <td th:text="${memberStat.id}"/>
-                <td th:text="${memberStat.systemId}"/>
+                <td th:text="${memberStat.frequency}"/>
                 <td th:text="${memberStat.rankId}"/>
+                <td th:text="${memberStat.systemId}"/>
                 <td th:text="${memberStat.userId}"/>
-                <td th:text="${memberStat.exDescription}"/>
-                <td th:text="${memberStat.exOccurtime}"/>
-                <td th:text="${memberStat.exCreatetime}"/>
-                <td th:text="${memberStat.token}"/>
+                <td th:text="${memberStat.senderId}"/>
             </tr>
         </table>
     </div>

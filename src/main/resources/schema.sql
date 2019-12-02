@@ -96,8 +96,6 @@ insert into t_system (system_name, system_description, user_id, token)values ('�
 insert into t_system (system_name, system_description, user_id, token)values ('理财产品销售系统', '为银行提供各种理财产品的统一销售管理平台，系统连接行内、行外的多个系统及渠道', 3, 'LCCPXS789');
 
 
-
-
 insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (1, 1, 1000, 200, 2);
 insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (5, 1, 1000, 201, 2);
 insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (5, 2, 1001, 201, 1);
@@ -111,8 +109,3 @@ insert into t_rank (rank_name) VALUES ('error');
 insert into t_sender (config) VALUES ('{"method": "mail", "mail.smtp.host":“smtp.qq.com”, "mail.smtp.port":"587","mail.user":"986847686@qq.com", "mail.password":"tsrhhokyrmblbcac"}');
 
 
-
-
-insert into t_notice values (10001, '张经理', '986847686@qq.com');
-
-select admin_name, admin_mail from t_notice where system_id=10001 and ex_id=34;
