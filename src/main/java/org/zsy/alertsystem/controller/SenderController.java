@@ -6,15 +6,13 @@ import org.zsy.alertsystem.pojo.ExMessage;
 import org.zsy.alertsystem.pojo.Rule;
 import org.zsy.alertsystem.pojo.SenderLog;
 import org.zsy.alertsystem.pojo.User;
-import org.zsy.alertsystem.service.ExMessageService;
-import org.zsy.alertsystem.service.RuleService;
-import org.zsy.alertsystem.service.SenderService;
-import org.zsy.alertsystem.service.UserService;
+import org.zsy.alertsystem.service.*;
 import org.zsy.alertsystem.util.JsonRequestUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -39,11 +37,25 @@ public class SenderController {
     @Resource
     SenderService senderService;
 
+    @Resource
+    SenderLogService senderLogService;
+
+    @Resource
+    SystemService systemService;
+
+
     @ResponseBody
     @PostMapping(value = "/sender")
-    public String sendMailToAdmin(HttpServletRequest request, HttpServletResponse response) {
+    public void sendMailToAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         ExMessage exMessage = JsonRequestUtil.getPostJson(request, ExMessage.class);
+
+        boolean isSystem = systemService.checkSystem(exMessage);
+        if(!isSystem) {
+            response.setStatus(404);
+            response.getWriter().append("Not Found");
+            return;
+        }
 
         // 把预警信息入库
         exMessageService.addExMessage(exMessage);
@@ -63,16 +75,10 @@ public class SenderController {
                 // 发送通知
                 SenderLog senderLog = senderService.sendExMessage(ruleList.get(index).getSenderId(), user, exMessage);
                 // 把通知日志入库
-                System.out.println("通知入库");
-            } else {
-                // 不需要发通知
-                System.out.println("不需要");
+                senderLogService.addSenderLog(senderLog);
             }
             index++;
         }
-
-        System.out.println(exMessage);
-        return "{}";
     }
 
 

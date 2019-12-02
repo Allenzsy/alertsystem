@@ -7,6 +7,7 @@
     <result column="mail" jdbcType="VARCHAR" property="mail" />
     <result column="qq" jdbcType="VARCHAR" property="qq" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="is_admin" jdbcType="BIT" property="admin" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_name, mail, qq, phone
+    id, user_name, mail, qq, phone, is_admin
   </sql>
   <select id="selectByExample" parameterType="org.zsy.alertsystem.pojo.UserExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,9 @@
   </delete>
   <insert id="insert" parameterType="org.zsy.alertsystem.pojo.User">
     insert into t_user (id, user_name, mail, 
-      qq, phone)
+      qq, phone, is_admin)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, 
-      #{qq,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
+      #{qq,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{admin,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="org.zsy.alertsystem.pojo.User">
     insert into t_user
@@ -123,6 +124,9 @@
       <if test="phone != null">
         phone,
       </if>
+      <if test="admin != null">
+        is_admin,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -139,6 +143,9 @@
       </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="admin != null">
+        #{admin,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -166,6 +173,9 @@
       <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
+      <if test="record.admin != null">
+        is_admin = #{record.admin,jdbcType=BIT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +187,8 @@
       user_name = #{record.userName,jdbcType=VARCHAR},
       mail = #{record.mail,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR}
+      phone = #{record.phone,jdbcType=VARCHAR},
+      is_admin = #{record.admin,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +208,9 @@
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
+      <if test="admin != null">
+        is_admin = #{admin,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -205,7 +219,8 @@
     set user_name = #{userName,jdbcType=VARCHAR},
       mail = #{mail,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR}
+      phone = #{phone,jdbcType=VARCHAR},
+      is_admin = #{admin,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

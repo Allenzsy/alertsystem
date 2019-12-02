@@ -18,6 +18,4 @@ public interface SenderService {
 
     Sender getSender(Integer id);
 
-    void addSenderLog();
-
 }

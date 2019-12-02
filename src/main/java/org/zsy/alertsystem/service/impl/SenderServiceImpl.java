@@ -9,9 +9,10 @@ import org.zsy.alertsystem.pojo.Sender;
 import org.zsy.alertsystem.pojo.SenderLog;
 import org.zsy.alertsystem.pojo.User;
 import org.zsy.alertsystem.service.SenderService;
-import org.zsy.alertsystem.util.SendMailUtil;
+import org.zsy.alertsystem.util.SendMessageUtil;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 
 /**
  * @author allenzsy
@@ -37,12 +38,13 @@ public class SenderServiceImpl implements SenderService {
         org.zsy.alertsystem.pojo.System system = systemMapper.selectByPrimaryKey(exMessage.getSystemId());
 
         JSONObject mailConfig = JSONObject.parseObject(sender.getConfig());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy 年 MM 月 dd 日 E HH 点 mm 分 ss 秒");
         String sendContent = String.format("尊敬的负责人%s:\n" +
-                                            "\t您所负责的%s, 在%s, 发生了 %s 预警, 详细异常信息如下:\n" +
-                                            "\t%s",
+                                           "    您所负责的%s, 在%s, 发生了 %s 预警, 详细异常信息如下:\n" +
+                                           "    %s",
                                     user.getUserName(),
                                     system.getSystemName(),
-                                    exMessage.getExOccurtime().toString(),
+                                    sdf.format(exMessage.getExOccurtime()),
                                     rank,
                                     exMessage.getExDescription());
         SenderLog senderLog = new SenderLog();
@@ -52,12 +54,10 @@ public class SenderServiceImpl implements SenderService {
 
         // 发通知
         try {
-            SendMailUtil.sendMail(mailConfig, sendContent);
+            SendMessageUtil.sendMessage(mailConfig, user, sendContent);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(sendContent);
-
         return senderLog;
     }
 
@@ -66,8 +66,4 @@ public class SenderServiceImpl implements SenderService {
         return senderMapper.selectByPrimaryKey(id);
     }
 
-    @Override
-    public void addSenderLog() {
-
-    }
 }

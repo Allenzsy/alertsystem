@@ -1,6 +1,7 @@
 package org.zsy.alertsystem.util;
 
 import com.alibaba.fastjson.JSONObject;
+import org.zsy.alertsystem.pojo.User;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -13,9 +14,29 @@ import java.util.Properties;
  * @date 2019/12/1
  * @time 18:02
  */
-public class SendMailUtil {
+public class SendMessageUtil {
 
-    public static void sendMail(JSONObject mailConfig, String content) throws Exception {
+    public static void sendMessage(JSONObject mailConfig, User user, String content) {
+        String method = mailConfig.getString("method");
+
+        try {
+            if("mail".equalsIgnoreCase(method)) {
+                sendMail(mailConfig, user, content);
+            } else if ("qq".equalsIgnoreCase(method)) {
+                sendQQ(mailConfig, user, content);
+            } else if ("phone".equalsIgnoreCase(method)) {
+                sendPhone(mailConfig, user, content);
+            } else if ("console".equalsIgnoreCase(method)) {
+                sendConsole(mailConfig, user, content);
+            } else {
+                // 应该抛出异常
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void sendMail(JSONObject mailConfig, User user, String content) throws Exception {
 
         // 创建Properties 类用于记录邮箱的一些属性
         Properties props = new Properties();
@@ -39,10 +60,10 @@ public class SendMailUtil {
         InternetAddress form = new InternetAddress(props.getProperty("mail.user"));
         message.setFrom(form);
         // 设置收件人的邮箱
-        InternetAddress to = new InternetAddress("986847686@qq.com");
+        InternetAddress to = new InternetAddress(user.getMail());
         message.setRecipient(Message.RecipientType.TO, to);
         // 设置邮件标题
-        message.setSubject("测试邮件");
+        message.setSubject("预警信息邮件");
         // 设置发送时间
         message.setSentDate(new Date());
         // 设置纯文本内容为邮件正文
@@ -60,6 +81,18 @@ public class SendMailUtil {
         transport.close();
 
 
+    }
+
+    private static void sendQQ(JSONObject mailConfig, User user, String content) throws Exception {
+        System.out.println(content);
+    }
+
+    private static void sendPhone(JSONObject mailConfig, User user, String content) throws Exception {
+        System.out.println(content);
+    }
+
+    private static void sendConsole(JSONObject mailConfig, User user, String content) throws Exception {
+        System.out.println(content);
     }
 
 }

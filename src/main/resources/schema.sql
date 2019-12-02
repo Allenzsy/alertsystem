@@ -31,6 +31,7 @@ CREATE TABLE if not  exists `t_user` (
     `mail` varchar (20) COMMENT '邮箱',
     `qq` varchar (20) COMMENT 'qq',
     `phone` varchar (20) COMMENT '手机号',
+    `is_admin` tinyint(1) NOT NULL COMMENT '是否为管理员',
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET = utf8 COMMENT = '负责人表';
 
@@ -90,15 +91,20 @@ SELECT CONCAT('DROP TABLE ', table_name,';') FROM information_schema.`TABLES` WH
 --     PRIMARY KEY (user_id, rule_id)
 -- ) ENGINE=InnoDB DEFAULT CHARSET = utf8 COMMENT = '发送通知规则-负责人映射表';
 
-    `id` bigint NOT NULL AUTO_INCREMENT COMMENT '系统id',
-    `system_name` varchar (16) NOT NULL COMMENT '系统名称',
-    `system_description` varchar (50) NOT NULL COMMENT '系统描述',
-    `token` char(10) NOT NULL COMMENT '用于验证系统，防止恶意调用预警中台暴露的接口',
-
-
-insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (2, 1, 1000, 200, 1);
 insert into t_system (system_name, system_description, user_id, token)values ('风险控制系统', '负责进行风险控制', 1, 'FXKZ123');
-insert into t_user (user_name, mail, qq, phone) VALUES ('张经理', '986847686@qq.com', 986847686, 13241305509);
+insert into t_system (system_name, system_description, user_id, token)values ('个人信贷系统', '管理信贷关系；管理贷款规模和贷款结构；管理贷款风险', 2, 'GRXD456');
+insert into t_system (system_name, system_description, user_id, token)values ('理财产品销售系统', '为银行提供各种理财产品的统一销售管理平台，系统连接行内、行外的多个系统及渠道', 3, 'LCCPXS789');
+
+
+
+
+insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (1, 1, 1000, 200, 2);
+insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (5, 1, 1000, 201, 2);
+insert into t_rule (frequency, user_id, system_id, rank_id, sender_id)values (5, 2, 1001, 201, 1);
+
+insert into t_user (user_name, mail, qq, phone, is_admin) VALUES ('张经理', '986847686@qq.com', 986847686, 13241305509, 1);
+insert into t_user (user_name, mail, qq, phone, is_admin) VALUES ('王经理', '987654333@qq.com', null , null, 0);
+insert into t_user (user_name, mail, qq, phone, is_admin) VALUES ('李经理', '123445677qq.com', null, 12388566666, 0);
 insert into t_rank (rank_name) VALUES ('error');
 
 

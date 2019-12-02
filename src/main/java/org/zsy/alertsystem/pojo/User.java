@@ -11,6 +11,8 @@ public class User {
 
     private String phone;
 
+    private Boolean admin;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Boolean getIsAdmin() {
+        return admin;
+    }
+
+    public void setIsAdmin(Boolean admin) {
+        this.admin = admin;
     }
 }

@@ -58,25 +58,25 @@
 <!--        </table>-->
 
 
-<!--        <table schema="alertsystem" tableName="t_user"-->
+        <table schema="alertsystem" tableName="t_user"
+               enableCountByExample="true"
+               domainObjectName="User">
+        </table>
+
+<!--        <table schema="alertsystem" tableName="t_senderlog"-->
 <!--               enableCountByExample="true"-->
-<!--               domainObjectName="User">-->
+<!--               domainObjectName="SenderLog">-->
 <!--        </table>-->
 
-        <table schema="alertsystem" tableName="t_senderlog"
-               enableCountByExample="true"
-               domainObjectName="SenderLog">
-        </table>
+<!--        <table schema="alertsystem" tableName="t_sender"-->
+<!--               enableCountByExample="true"-->
+<!--               domainObjectName="Sender">-->
+<!--        </table>-->
 
-        <table schema="alertsystem" tableName="t_sender"
-               enableCountByExample="true"
-               domainObjectName="Sender">
-        </table>
-
-        <table schema="alertsystem" tableName="t_system"
-               enableCountByExample="true"
-               domainObjectName="System">
-        </table>
+<!--        <table schema="alertsystem" tableName="t_system"-->
+<!--               enableCountByExample="true"-->
+<!--               domainObjectName="System">-->
+<!--        </table>-->
 
     </context>
 </generatorConfiguration>
